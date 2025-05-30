@@ -5,7 +5,17 @@
 
 	<body>
 		<h1>Projeto Matricula Facil</h1>
-		<p>Disciplina Novas Tecnologias usando django</p>
-
+		<p>Disciplina Novas Tecnologias</p>
+		<span style="float: right;">
+			{% if user.is_authenticated %}
+				<span>Olá {{user.username}}!</span>
+				<form action="{% url 'MVT:logout' %}" method="post">
+    				{% csrf_token %}
+    				<span><button type="submit">Logout</button></span>
+				</form>
+			{% else %}
+				<span><a href="{% url 'MVT:login' %}">Login</a></span>			
+			{% endif %}
+		</span>
 	</body>
 </html>
