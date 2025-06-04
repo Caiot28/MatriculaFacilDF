@@ -1,0 +1,13 @@
+<h2>Creches com vagas disponíveis</h2>
+<ul>
+    {% for creche in creches %}
+    <li>
+        <strong>{{ creche.nome }}</strong> – {{ creche.endereco }}  
+        ({{ creche.vagas_disponiveis }} vagas)
+        <a href="{% url 'matricula' creche.id %}">Matricular</a>
+    </li>
+    {% empty %}
+    <li>Nenhuma creche com vagas disponíveis nesta região.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'index' %}">← Voltar</a>

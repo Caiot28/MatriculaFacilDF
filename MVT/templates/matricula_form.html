@@ -1,0 +1,7 @@
+<h2>Formulário de Matrícula – {{ creche.nome }}</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar Matrícula</button>
+</form>
+<a href="{% url 'lista_creches' %}?ra={{ creche.regiao.id }}">← Voltar</a>
