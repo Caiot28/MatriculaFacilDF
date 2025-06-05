@@ -15,13 +15,14 @@
     <meta charset="UTF-8">
     <title>Matrícula Fácil – DF</title>
 
-    <!-- Bootstrap primeiro -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Seu CSS depois -->
+    
     <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
 
-    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crafty+Girls&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -32,21 +33,23 @@
     <main class="overlay">
         <h2>Bem-vindo ao Matrícula Fácil – DF</h2>
         <p>
-            Este sistema foi criado para facilitar a matrícula de crianças em creches públicas do Distrito Federal.
-            Aqui, você pode consultar as vagas disponíveis na sua Região Administrativa e, se houver oportunidade,
-            fazer a matrícula online de forma rápida e prática.
+            Este sistema foi criado para facilitar a matrícula de crianças em creches públicas do Distrito Federal. Aqui, você pode consultar as vagas disponíveis na sua Região Administrativa e, se houver oportunidade, fazer a matrícula online de forma rápida e prática. 
+            Para começar, selecione a Região Administrativa desejada e veja quais creches têm vagas. 
+            <br>
+            <br>
+            Caso encontre uma vaga adequada, basta preencher o formulário de matrícula diretamente pelo sistema, sem necessidade de deslocamento.
         </p>
         <form method="get" action="{% url 'lista_creches' %}">
             <div class="form-group minha-form-group">
-                <label for="ra">Região Administrativa:</label>
+                <label for="ra" style="font-weight: bold;">Região Administrativa:</label>
                 <select name="ra" id="ra" class="meu-select" required>
-                    <option value="">-- Selecione --</option>
+                    <option value="">Selecione</option>
                     {% for ra in regioes %}
                         <option value="{{ ra.id }}">{{ ra.nome }}</option>
                     {% endfor %}
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary meu-botao">Buscar</button>
+            <button type="submit" class="btn btn meu-botao">Buscar</button>
         </form>
     </main>
 

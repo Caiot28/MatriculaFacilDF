@@ -3,28 +3,36 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: url("../images/fundo.jpg") no-repeat center center fixed;
     background-size: cover;
-    color: #222;
+    color: #17224d;
 }
 
 .titulo-pagina {
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    
 }
 
 .titulo-pagina h1 {
-    font-size: 5.5em;
-    color: #f2c100;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 6.5em;
+    color: #f1e21d;
+    font-family: 'Crafty Girls', cursive;
 }
 
 .overlay {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #25e7e2;
     width: 90%;
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
+    max-width: 600px;
+    margin: 80px 40px 40px auto;  /* auto à esquerda, 40px à direita */
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
+    margin-top: 20px;
+    
+}
+
+p{
+    text-align: justify;
 }
 
 /* Personalização específica */
@@ -47,12 +55,18 @@ body {
     padding: 12px 24px;
     border-radius: 20px;
     font-size: 16px;
+    background-color: #17224d;
+    color: white;
+    font-weight: bold;
+    
 }
 
 /* Rodapé */
 .footer {
     text-align: center;
     margin-top: 60px;
+    margin-bottom: 30px;
     font-size: 0.9em;
+    font-weight: bold;
     color: #eee;
 }
