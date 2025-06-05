@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import RegiaoAdministrativa, Creche
 from .forms import MatriculaForm
@@ -6,12 +7,32 @@ def index(request):
     regioes = RegiaoAdministrativa.objects.all()
     return render(request, 'index.html', {'regioes': regioes})
 
-def lista_creches(request):
+"""def lista_creches(request):
     ra_id = request.GET.get('ra')
     creches = []
     if ra_id:
         creches = Creche.objects.filter(regiao_id=ra_id, vagas_disponiveis__gt=0)
-    return render(request, 'creches.html', {'creches': creches})
+    return render(request, 'creches.html', {'creches': creches})"""
+
+def lista_creches(request):
+    ra_id = request.GET.get('ra')
+    creches = []
+    nome_ra = ''
+    page = request.GET.get('page', 1)  # página atual (padrão = 1)
+
+    if ra_id:
+        ra = get_object_or_404(RegiaoAdministrativa, id=ra_id)
+        nome_ra = ra.nome
+        todas_creches = Creche.objects.filter(regiao=ra, vagas_disponiveis__gt=0)
+
+        paginator = Paginator(todas_creches, 2)  # 2 creches por página
+        creches = paginator.get_page(page)
+
+    return render(request, 'creches.html', {
+        'creches': creches,
+        'nome_ra': nome_ra,
+        'ra_id': ra_id,
+    })
 
 def matricula(request, creche_id):
     creche = get_object_or_404(Creche, id=creche_id)

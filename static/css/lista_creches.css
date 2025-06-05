@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url("../images/fundo.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #222;
+}
+
+.titulo h1 {
+    font-family: 'Crafty Girls', cursive;
+    font-size: 3em;
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+
+.bloco-lista {
+    background-color: #3ef1ec;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.bloco-lista h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.creche-item {
+    padding: 15px 0;
+    border-bottom: 2px dotted black;
+}
+
+.btn-matricula {
+    float: right;
+    margin-top: -25px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.botoes-rodape {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+.navegacao-paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+
+.voltar {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.vermais {
+    text-decoration: none;
+    color: #02656f;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.9em;
+    color: #fff;
+}
