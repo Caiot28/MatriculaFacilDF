@@ -8,10 +8,14 @@ body {
 
 .titulo h1 {
     font-family: 'Crafty Girls', cursive;
-    font-size: 3em;
+    font-size: 5em;
     text-align: center;
     color: white;
     margin-top: 30px;
+}
+
+h2{
+    color: white;
 }
 
 .bloco-lista {
@@ -31,16 +35,49 @@ body {
 }
 
 .creche-item {
-    padding: 15px 0;
+    padding: 8px 0 8px 0;  /* aumenta o espaço abaixo do conteúdo */
     border-bottom: 2px dotted black;
+    margin-bottom: 0px;
+    gap: 1px;
+}
+
+
+/* nova div para alinhar à direita */
+.matricula-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0px;
 }
 
 .btn-matricula {
-    float: right;
-    margin-top: -25px;
-    margin-bottom: 10px;
+    background-color: white;
+    color: #000;
+    border: 2px solid #000;
     border-radius: 20px;
+    padding: 8px 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    gap: 0px;
 }
+
+.btn-matricula:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.sem-vagas {
+    text-align: center;
+    padding: 40px 20px;
+    font-weight: bold;
+    color: #880000;
+    background-color: #fff5f5;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
 
 .botoes-rodape {
     display: flex;
@@ -63,17 +100,16 @@ body {
     text-decoration: none;
     color: black;
     font-weight: bold;
-}
-
-.vermais {
-    text-decoration: none;
-    color: #02656f;
-    font-weight: bold;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 0.95em;
 }
 
 .footer {
     text-align: center;
     margin-top: 60px;
-    font-size: 0.9em;
-    color: #fff;
+    margin-bottom: 30px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #eee;
 }
