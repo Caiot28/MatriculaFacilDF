@@ -8,21 +8,22 @@ body {
 
 .titulo h1 {
     font-family: 'Crafty Girls', cursive;
-    font-size: 5em;
+    font-size: 6vw; /* Responsivo */
     text-align: center;
     color: white;
-    margin-top: 30px;
+    margin-top: 5vh;
 }
 
-h2{
+h2 {
     color: white;
 }
 
 .bloco-lista {
     background-color: #3ef1ec;
+    width: 90%;
     max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
+    margin: 5vh auto;
+    padding: 4vh 4vw;
     border-radius: 30px;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
     text-align: left;
@@ -31,22 +32,21 @@ h2{
 .bloco-lista h2 {
     text-align: center;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 4vh;
 }
 
 .creche-item {
-    padding: 8px 0 8px 0;  /* aumenta o espaço abaixo do conteúdo */
+    padding: 1vh 0;
     border-bottom: 2px dotted black;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     gap: 1px;
 }
-
 
 /* nova div para alinhar à direita */
 .matricula-wrapper {
     display: flex;
     justify-content: flex-end;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .btn-matricula {
@@ -54,13 +54,14 @@ h2{
     color: #000;
     border: 2px solid #000;
     border-radius: 20px;
-    padding: 8px 8px;
+    padding: 0.8em 1.2em;
     font-weight: bold;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    gap: 0px;
+    margin-bottom: 2vh;
+    margin-top: 0;
+    gap: 0;
+    font-size: 1em;
 }
 
 .btn-matricula:hover {
@@ -70,19 +71,18 @@ h2{
 
 .sem-vagas {
     text-align: center;
-    padding: 40px 20px;
+    padding: 5vh 2vw;
     font-weight: bold;
     color: #880000;
     background-color: #fff5f5;
     border-radius: 15px;
-    margin-top: 30px;
+    margin-top: 5vh;
 }
-
 
 .botoes-rodape {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 4vh;
     font-size: 0.9em;
 }
 
@@ -91,25 +91,69 @@ h2{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 3vh;
     font-size: 0.95em;
 }
-
 
 .voltar {
     text-decoration: none;
     color: black;
     font-weight: bold;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 3vh;
     font-size: 0.95em;
 }
 
 .footer {
     text-align: center;
-    margin-top: 60px;
-    margin-bottom: 30px;
+    margin-top: 8vh;
+    margin-bottom: 4vh;
     font-size: 1em;
     font-weight: bold;
     color: #eee;
+}
+
+/* Media queries */
+
+/* Telas médias (ex: notebooks menores, tablets em landscape) */
+@media (max-width: 1366px) {
+    .titulo h1 {
+        font-size: 7vw;
+    }
+
+    .bloco-lista {
+        width: 95%;
+        padding: 5vh 5vw;
+    }
+}
+
+/* Telas pequenas (ex: tablets portrait, celulares) */
+@media (max-width: 768px) {
+    .titulo h1 {
+        font-size: 9vw;
+    }
+
+    .bloco-lista {
+        width: 95%;
+        padding: 6vh 6vw;
+    }
+
+    /* Alinhar botão ao centro em telas pequenas */
+    .matricula-wrapper {
+        justify-content: center;
+    }
+
+    .btn-matricula {
+        font-size: 1.2em;
+    }
+
+    .botoes-rodape {
+        flex-direction: column;
+        align-items: center;
+        gap: 1vh;
+    }
+
+    .voltar {
+        font-size: 1.1em;
+    }
 }

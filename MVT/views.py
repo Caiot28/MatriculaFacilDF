@@ -34,7 +34,7 @@ def lista_creches(request):
         'ra_id': ra_id,
     })
 
-def matricula(request, creche_id):
+"""def matricula(request, creche_id):
     creche = get_object_or_404(Creche, id=creche_id)
     if request.method == 'POST':
         form = MatriculaForm(request.POST, request.FILES)
@@ -45,4 +45,26 @@ def matricula(request, creche_id):
             return render(request, 'sucesso.html')
     else:
         form = MatriculaForm()
+    return render(request, 'matricula_form.html', {'form': form, 'creche': creche})"""
+def matricula(request, creche_id):
+    creche = get_object_or_404(Creche, id=creche_id)
+
+    if request.method == 'POST':
+        form = MatriculaForm(request.POST, request.FILES)
+        if form.is_valid():
+            if creche.vagas_disponiveis > 0:
+                matricula = form.save(commit=False)
+                matricula.creche = creche
+                matricula.save()
+
+                # Atualiza as vagas
+                creche.vagas_disponiveis -= 1
+                creche.save()
+
+                return render(request, 'sucesso.html')
+            # Se não houver vagas não faz nada, volta para o formulário (mantém o form na tela)
+    else:
+        form = MatriculaForm()
+
     return render(request, 'matricula_form.html', {'form': form, 'creche': creche})
+
