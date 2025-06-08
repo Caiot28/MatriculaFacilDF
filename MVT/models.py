@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 class RegiaoAdministrativa(models.Model):
     nome = models.CharField(max_length=100)
@@ -35,36 +34,35 @@ class Matricula(models.Model):
 
     # Dados da criança
     nome_crianca = models.CharField(max_length=100)  # sem default
-    data_nascimento = models.DateField(default='2000-01-01')
+    data_nascimento = models.DateField()
     sexo = models.CharField(
         max_length=20,
         choices=[
             ('Masculino', 'Masculino'),
             ('Feminino', 'Feminino'),
-        ],
-        default='Feminino'
+        ]
     )
 
     # Dados do responsável
     nome_responsavel = models.CharField(max_length=100)  # sem default
-    cpf_responsavel = models.CharField(max_length=14, default='000.000.000-00')
-    telefone = models.CharField(max_length=20, default='(00)00000-0000')
-    email = models.EmailField(default='email@exemplo.com')
+    cpf_responsavel = models.CharField(max_length=14)
+    telefone = models.CharField(max_length=20)
+    email = models.EmailField()
 
     # Endereço normalizado
-    endereco_rua = models.CharField(max_length=200, default='Rua Exemplo')
-    endereco_numero = models.CharField(max_length=10, default='0')
-    endereco_bairro = models.CharField(max_length=100, default='Bairro Exemplo')
-    endereco_cidade = models.CharField(max_length=100, default='Cidade Exemplo')
-    endereco_uf = models.CharField(max_length=2, default='DF')
+    endereco_rua = models.CharField(max_length=200)
+    endereco_numero = models.CharField(max_length=10)
+    endereco_bairro = models.CharField(max_length=100)
+    endereco_cidade = models.CharField(max_length=100)
+    endereco_uf = models.CharField(max_length=2)
 
     # Documentos (uploads)
-    certidao_nascimento = models.FileField(upload_to='documentos/certidoes/', default='documentos/certidao_padrao.pdf')
-    documento_responsavel = models.FileField(upload_to='documentos/documentos_responsavel/', default='documentos/documentos_responsavel_P.pdf')
-    comprovante_residencia = models.FileField(upload_to='documentos/comprovantes_residencia/', default='comprovantes_residencia_P.pdf')
+    certidao_nascimento = models.FileField(upload_to='documentos/certidoes/')
+    documento_responsavel = models.FileField(upload_to='documentos/documentos_responsavel/')
+    comprovante_residencia = models.FileField(upload_to='documentos/comprovantes_residencia/')
 
     # Data da matrícula (timestamp)
-    data_matricula = models.DateTimeField(default=timezone.now)
+    data_matricula = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Matrícula {self.id} - {self.nome_crianca}"

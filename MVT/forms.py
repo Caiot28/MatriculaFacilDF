@@ -26,4 +26,19 @@ class MatriculaForm(forms.ModelForm):
             'comprovante_residencia',
         ]
 
+        widgets = {
+            'data_nascimento': forms.DateInput(
+                format='%d/%m/%Y',
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'dd/mm/aaaa',
+                    'type': 'text',  # Usa type text para permitir o formato brasileiro
+                }
+            ),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['data_nascimento'].input_formats = ['%d/%m/%Y']
+
 

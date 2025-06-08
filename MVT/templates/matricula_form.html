@@ -11,6 +11,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matrícula – {{ creche.nome }}</title>
 
     <!-- Bootstrap -->
@@ -44,7 +45,7 @@
         <!-- Formulário de matrícula -->
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-
+            <h3>Dados da Criança:</h3>
             <div class="row mb-3">
                 <div class="col-md-6">
                     {{ form.nome_crianca.label_tag }}
@@ -62,7 +63,8 @@
                     {{ form.sexo }}
                 </div>
             </div>
-
+            <br>
+            <h3>Dados do Responsável:</h3>
             <div class="row mb-3">
                 <div class="col-md-6">
                     {{ form.nome_responsavel.label_tag }}
@@ -110,7 +112,8 @@
                     {{ form.endereco_uf }}
                 </div>
             </div>
-
+            <br>
+            <h3>Documentação:</h3>
             <div class="row mb-3">
                 <div class="col-md-4">
                     {{ form.certidao_nascimento.label_tag }}
@@ -125,8 +128,10 @@
                     {{ form.comprovante_residencia }}
                 </div>
             </div>
+            <div class="btn-enviar">
+                <button type="submit" class="btn-submit">Enviar Matrícula</button>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Enviar Matrícula</button>
         </form>
 
 
