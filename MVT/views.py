@@ -23,11 +23,11 @@ def lista_creches(request):
     if ra_id:
         ra = get_object_or_404(RegiaoAdministrativa, id=ra_id)
         nome_ra = ra.nome
-        todas_creches = Creche.objects.filter(regiao=ra, vagas_disponiveis__gt=0)
+        todas_creches = Creche.objects.filter(regiao_id=ra_id, vagas_disponiveis__gt=0).order_by('nome')
+        paginator = Paginator(todas_creches, 2)
 
-        paginator = Paginator(todas_creches, 2)  # 2 creches por página
         creches = paginator.get_page(page)
-
+        
     return render(request, 'creches.html', {
         'creches': creches,
         'nome_ra': nome_ra,
@@ -61,10 +61,13 @@ def matricula(request, creche_id):
                 creche.vagas_disponiveis -= 1
                 creche.save()
 
-                return render(request, 'sucesso.html')
+                return render(request, 'sucesso.html', {'creche': creche})
+
             # Se não houver vagas não faz nada, volta para o formulário (mantém o form na tela)
     else:
         form = MatriculaForm()
 
     return render(request, 'matricula_form.html', {'form': form, 'creche': creche})
+    
+
 

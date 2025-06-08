@@ -21,7 +21,7 @@ body {
 .overlay {
     background-color: #25e7e2;
     width: 90%;
-    max-width: 600px;
+    max-width: 650px;
     margin: 5vh 3vw 3vh auto; /* Alinhada à direita em telas grandes */
     padding: 3vh 3vw;
     border-radius: 20px;

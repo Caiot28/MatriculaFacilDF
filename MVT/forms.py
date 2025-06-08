@@ -25,16 +25,43 @@ class MatriculaForm(forms.ModelForm):
             'documento_responsavel',
             'comprovante_residencia',
         ]
+        
+        labels = {
+            'nome_crianca': 'Nome da Criança',
+            'data_nascimento': 'Data de Nascimento',
+            'sexo': 'Sexo',
+            'nome_responsavel': 'Nome do Responsável',
+            'cpf_responsavel': 'CPF do Responsável',
+            'telefone': 'Telefone',
+            'email': 'E-mail',
+            'endereco_rua': 'Rua',
+            'endereco_numero': 'Número',
+            'endereco_bairro': 'Bairro',
+            'endereco_cidade': 'Cidade',
+            'endereco_uf': 'UF',
+            'certidao_nascimento': 'Certidão de Nascimento da Criança(upload)',
+            'documento_responsavel': 'Documento do Responsável (upload)',
+            'comprovante_residencia': 'Comprovante de Residência (upload)',
+        }
 
         widgets = {
             'data_nascimento': forms.DateInput(
                 format='%d/%m/%Y',
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'dd/mm/aaaa',
-                    'type': 'text',  # Usa type text para permitir o formato brasileiro
+                    'placeholder': '01/01/1999',
+                    'type': 'text',  
                 }
             ),
+            
+            'cpf_responsavel': forms.TextInput(
+                attrs={
+                'class': 'form-control',
+                'placeholder': '000.000.000-00',
+                'type': 'text',
+                'maxlength': '14',  
+                }
+             ),
         }
 
     def __init__(self, *args, **kwargs):
