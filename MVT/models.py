@@ -16,20 +16,14 @@ class Creche(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.regiao.nome}"
 
-"""class Matricula(models.Model):
-    creche = models.ForeignKey(Creche, on_delete=models.CASCADE)
-    nome_crianca = models.CharField(max_length=100)
-    #data_nascimento = models.DateField()
-    nome_responsavel = models.CharField(max_length=100)
-    #cpf_responsavel = models.CharField(max_length=14)
-    documento = models.FileField(upload_to='documentos/')
-    data_matricula = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"Matrícula {self.id} - {self.nome_crianca}"
-        """
 class Matricula(models.Model):
-    # Relação com a creche
+    
+    STATUS_CHOICES = [
+        ('analise', 'Em análise'),
+        ('aprovada', 'Aprovada'),
+        ('recusada', 'Recusada'),
+    ]
+    
     creche = models.ForeignKey('Creche', on_delete=models.CASCADE)
 
     # Dados da criança
@@ -44,12 +38,11 @@ class Matricula(models.Model):
     )
 
     # Dados do responsável
-    nome_responsavel = models.CharField(max_length=100)  # sem default
+    nome_responsavel = models.CharField(max_length=100)
     cpf_responsavel = models.CharField(max_length=14)
     telefone = models.CharField(max_length=20)
     email = models.EmailField()
 
-    # Endereço normalizado
     endereco_rua = models.CharField(max_length=200)
     endereco_numero = models.CharField(max_length=10)
     endereco_bairro = models.CharField(max_length=100)
@@ -60,8 +53,12 @@ class Matricula(models.Model):
     certidao_nascimento = models.FileField(upload_to='documentos/certidoes/')
     documento_responsavel = models.FileField(upload_to='documentos/documentos_responsavel/')
     comprovante_residencia = models.FileField(upload_to='documentos/comprovantes_residencia/')
+    
+     # Status da matrícula
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='analise')
+    motivo_recusa = models.TextField(blank=True, null=True)
 
-    # Data da matrícula (timestamp)
+    # Data da matrícula
     data_matricula = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

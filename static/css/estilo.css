@@ -1,3 +1,14 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}
+
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -8,12 +19,12 @@ body {
 
 .titulo-pagina {
     text-align: center;
-    padding-top: 5vh; /* proporcional */
+    padding-top: 5vh; 
     margin-bottom: 2vh;
 }
 
 .titulo-pagina h1 {
-    font-size: 6vw; /* Escala com a largura da tela */
+    font-size: 6vw; 
     color: #f1e21d;
     font-family: 'Crafty Girls', cursive;
 }
@@ -22,7 +33,7 @@ body {
     background-color: #25e7e2;
     width: 90%;
     max-width: 650px;
-    margin: 5vh 3vw 3vh auto; /* Alinhada à direita em telas grandes */
+    margin: 5vh 3vw 3vh auto; 
     padding: 3vh 3vw;
     border-radius: 20px;
     text-align: center;
@@ -32,7 +43,6 @@ p {
     text-align: justify;
 }
 
-/* Personalização específica */
 .minha-form-group {
     margin-top: 2vh;
     text-align: left;
@@ -58,7 +68,7 @@ p {
     cursor: pointer;
 }
 
-/* Rodapé */
+
 .footer {
     text-align: center;
     margin-top: 8vh;
@@ -70,7 +80,6 @@ p {
 
 /* Media queries */
 
-/* Telas médias (notebooks menores, tablets em landscape) */
 @media (max-width: 1366px) {
     .titulo-pagina h1 {
         font-size: 8vw;
@@ -78,12 +87,11 @@ p {
 
     .overlay {
         width: 95%;
-        margin: 4vh 3vw 3vh auto; /* Continua alinhada à direita */
+        margin: 4vh 3vw 3vh auto; 
         padding: 4vh 4vw;
     }
 }
 
-/* Telas pequenas (tablets em portrait, celulares) */
 @media (max-width: 768px) {
     
     .titulo-pagina h1 {
@@ -92,7 +100,7 @@ p {
 
     .overlay {
         width: 95%;
-        margin: 4vh auto; /* Centralizada horizontalmente */
+        margin: 4vh auto; 
         padding: 5vh 5vw;
     }
 

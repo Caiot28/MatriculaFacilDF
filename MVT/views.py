@@ -2,23 +2,30 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import RegiaoAdministrativa, Creche
 from .forms import MatriculaForm
+from .models import Matricula
+from datetime import datetime
 
 def index(request):
     regioes = RegiaoAdministrativa.objects.all()
     return render(request, 'index.html', {'regioes': regioes})
 
-"""def lista_creches(request):
-    ra_id = request.GET.get('ra')
-    creches = []
-    if ra_id:
-        creches = Creche.objects.filter(regiao_id=ra_id, vagas_disponiveis__gt=0)
-    return render(request, 'creches.html', {'creches': creches})"""
+def acompanhamento(request):
+    resultado = None
+    if request.method == 'POST':
+        cpf = request.POST.get('cpf_responsavel')
+        nascimento_str = request.POST.get('data_nascimento')
+        try:
+            nascimento = datetime.strptime(nascimento_str, '%d/%m/%Y').date()
+            resultado = Matricula.objects.filter(cpf_responsavel=cpf, data_nascimento=nascimento).first()
+        except ValueError:
+            resultado = None
+    return render(request, 'acompanhamento.html', {'resultado': resultado})
 
 def lista_creches(request):
     ra_id = request.GET.get('ra')
     creches = []
     nome_ra = ''
-    page = request.GET.get('page', 1)  # página atual (padrão = 1)
+    page = request.GET.get('page', 1)  
 
     if ra_id:
         ra = get_object_or_404(RegiaoAdministrativa, id=ra_id)
@@ -34,18 +41,6 @@ def lista_creches(request):
         'ra_id': ra_id,
     })
 
-"""def matricula(request, creche_id):
-    creche = get_object_or_404(Creche, id=creche_id)
-    if request.method == 'POST':
-        form = MatriculaForm(request.POST, request.FILES)
-        if form.is_valid():
-            matricula = form.save(commit=False)
-            matricula.creche = creche
-            matricula.save()
-            return render(request, 'sucesso.html')
-    else:
-        form = MatriculaForm()
-    return render(request, 'matricula_form.html', {'form': form, 'creche': creche})"""
 def matricula(request, creche_id):
     creche = get_object_or_404(Creche, id=creche_id)
 
@@ -57,13 +52,10 @@ def matricula(request, creche_id):
                 matricula.creche = creche
                 matricula.save()
 
-                # Atualiza as vagas
                 creche.vagas_disponiveis -= 1
                 creche.save()
 
                 return render(request, 'sucesso.html', {'creche': creche})
-
-            # Se não houver vagas não faz nada, volta para o formulário (mantém o form na tela)
     else:
         form = MatriculaForm()
 

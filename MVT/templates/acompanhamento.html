@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Acompanhar Matrícula</title>
+    <link rel="stylesheet" href="{% static 'css/acompanhamento.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crafty+Girls&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+</head>
+
+<body>
+    <header class="titulo-pagina">
+        <h1>Matrícula Fácil – DF</h1>
+    </header>
+
+    <main class="acompanhamento-container">
+        <h2>Acompanhe sua Matrícula</h2>
+        <p>Digite o CPF do responsável e a data de nascimento da criança para consultar abaixo o status da matrícula.
+        </p>
+
+        {% if not resultado %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="cpf">CPF do Responsável:</label>
+                <input type="text" name="cpf_responsavel" id="cpf" class="form-control" placeholder="000.000.000-00"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="nascimento">Data de Nascimento da Criança:</label>
+                <input type="text" name="data_nascimento" id="nascimento" class="form-control" placeholder="dd/mm/aaaa"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary">Consultar</button>
+            <br><br>
+            <a href="{% url 'index' %}" class="voltar">← Voltar</a>
+        </form>
+        {% endif %}
+
+        {% if resultado %}
+        <div class="resultado">
+            <h3>Status da Matrícula:
+                {% if resultado.status == 'analise' %}
+                <span class="badge bg-warning text-dark">Em Análise</span>
+                {% elif resultado.status == 'aprovada' %}
+                <span class="badge bg-primary">Aprovada</span>
+                {% elif resultado.status == 'recusada' %}
+                <span class="badge bg-danger">Recusada</span>
+                {% else %}
+                <span class="badge bg-secondary">{{ resultado.get_status_display }}</span>
+                {% endif %}
+            </h3>
+
+            {% if resultado.status == 'recusada' %}
+            <p><strong>Motivo da recusa:</strong> {{ resultado.motivo_recusa }}</p>
+            {% endif %}
+            
+            <a href="{% url 'acompanhamento' %}" class="btn btn-primary">Nova Consulta</a>
+            <br>
+            <br>
+            <a href="{% url 'index' %}" class="voltar">← Voltar</a>
+        </div>
+        {% endif %}
+
+    </main>
+
+    <footer class="footer">
+        Secretaria de Estado de Educação do Distrito Federal – SEEDF
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/jquery.inputmask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cpf').inputmask('999.999.999-99');
+            $('#nascimento').inputmask('99/99/9999');
+        });
+    </script>
+</body>
+
+</html>

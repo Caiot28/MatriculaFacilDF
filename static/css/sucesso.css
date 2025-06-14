@@ -1,4 +1,13 @@
-/* Estilo geral da página */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -7,7 +16,6 @@ body {
     color: #17224d;
 }
 
-/* Cabeçalho */
 .titulo-pagina {
     background-color: #17224d;
     color: white;
@@ -18,7 +26,6 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Conteúdo principal */
 .sucesso-container {
     background-color: white;
     max-width: 600px;
@@ -29,14 +36,12 @@ body {
     text-align: center;
 }
 
-/* Título de sucesso */
 .sucesso-container h2 {
-    color: #28a745; /* verde do Bootstrap */
+    color: #28a745; 
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-/* Texto padrão */
 .sucesso-container p {
     font-size: 1.1rem;
     color: #444;
@@ -44,7 +49,6 @@ body {
     line-height: 1.5;
 }
 
-/* Botões */
 .sucesso-container .btn {
     margin: 10px;
     padding: 12px 24px;
@@ -63,7 +67,6 @@ body {
     color: white;
 }
 
-/* Rodapé */
 .footer {
     text-align: center;
     margin-top: 8vh;
@@ -73,7 +76,6 @@ body {
     color: #eee;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .sucesso-container {
         margin: 40px 20px;

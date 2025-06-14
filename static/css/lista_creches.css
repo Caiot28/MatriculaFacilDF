@@ -1,3 +1,13 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -8,7 +18,7 @@ body {
 
 .titulo h1 {
     font-family: 'Crafty Girls', cursive;
-    font-size: 6vw; /* Responsivo */
+    font-size: 6vw; 
     text-align: center;
     color: white;
     margin-top: 5vh;
@@ -42,7 +52,6 @@ h2 {
     gap: 1px;
 }
 
-/* nova div para alinhar à direita */
 .matricula-wrapper {
     display: flex;
     justify-content: flex-end;
@@ -115,7 +124,6 @@ h2 {
 
 /* Media queries */
 
-/* Telas médias (ex: notebooks menores, tablets em landscape) */
 @media (max-width: 1366px) {
     .titulo h1 {
         font-size: 7vw;
@@ -127,7 +135,6 @@ h2 {
     }
 }
 
-/* Telas pequenas (ex: tablets portrait, celulares) */
 @media (max-width: 768px) {
     .titulo h1 {
         font-size: 9vw;
@@ -138,7 +145,6 @@ h2 {
         padding: 6vh 6vw;
     }
 
-    /* Alinhar botão ao centro em telas pequenas */
     .matricula-wrapper {
         justify-content: center;
     }

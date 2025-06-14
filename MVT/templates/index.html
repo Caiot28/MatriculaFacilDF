@@ -1,13 +1,3 @@
-<!--<h2>Selecione a Região Administrativa</h2>
-<form method="get" action="{% url 'lista_creches' %}">
-    <select name="ra" required>
-        {% for ra in regioes %}
-        <option value="{{ ra.id }}">{{ ra.nome }}</option>
-        {% endfor %}
-    </select>
-    <button type="submit">Buscar Creches</button>
-</form>--> 
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,8 +23,10 @@
             Este sistema foi criado para facilitar a matrícula de crianças em creches públicas do Distrito Federal. Aqui, você pode consultar as vagas disponíveis na sua Região Administrativa e, se houver oportunidade, fazer a matrícula online de forma rápida e prática. 
             Para começar, selecione a Região Administrativa desejada e veja quais creches têm vagas. 
             <br>
-            <br>
             Caso encontre uma vaga adequada, basta preencher o formulário de matrícula diretamente pelo sistema, sem necessidade de deslocamento.
+            <br>
+            <br>
+            Se já realizou a matrícula do seu filho, poderá acompanhar o status da matrícula no link abaixo "Acompanhar Matrícula".
         </p>
         <form method="get" action="{% url 'lista_creches' %}">
             <div class="form-group minha-form-group">
@@ -47,6 +39,9 @@
                 </select>
             </div>
             <button type="submit" class="btn btn meu-botao">Buscar</button>
+            <br>
+            <a href="{% url 'acompanhamento' %}" class="btn btn-info mt-3">📄 Acompanhar Matrícula</a>
+            <br>
         </form>
     </main>
 

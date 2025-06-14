@@ -1,0 +1,133 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url("../images/fundo1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #17224d;
+}
+
+.titulo-pagina {
+    background-color: #17224d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Crafty Girls', cursive;
+    font-size: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.acompanhamento-container {
+    background-color: white;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.acompanhamento-container h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.acompanhamento-container p {
+    color: #555;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+}
+
+.acompanhamento-container label {
+    font-weight: bold;
+    color: #444;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.acompanhamento-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+
+.acompanhamento-container .btn {
+    background-color: #17224d;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.acompanhamento-container .btn:hover {
+    background-color: #0f1833;
+}
+.voltar {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    gap: 10px;
+    margin-top: 3vh;
+    font-size: 0.95em;
+}
+
+
+.resultado {
+    margin-top: 30px;
+    text-align: left;
+    background: #f1f9ff;
+    padding: 20px;
+    border-left: 5px solid #3ef1ec;
+    border-radius: 8px;
+}
+
+.resultado h3 {
+    margin-bottom: 10px;
+}
+
+.resultado p {
+    color: #333;
+}
+
+
+.footer {
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 4vh;
+    font-size: 1em;
+    font-weight: bold;
+    color: #eee;
+}
+
+
+@media (max-width: 576px) {
+    .titulo-pagina {
+        font-size: 1.5rem;
+    }
+
+    .acompanhamento-container {
+        padding: 25px;
+        margin: 30px 15px;
+    }
+
+    .acompanhamento-container h2 {
+        font-size: 1.4rem;
+    }
+}
+
